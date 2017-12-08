@@ -148,6 +148,7 @@ class OpenStackCredentialBuilder(credential.CredentialBuilder):
                          consts.EndpointType.INTERNAL,
                          consts.EndpointType.PUBLIC,
                          None]},
+            "project_id": {"type": "string"},
             "https_insecure": {"type": "boolean"},
             "https_cacert": {"type": "string"},
             "profiler_hmac_key": {"type": ["string", "null"]}

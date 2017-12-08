@@ -83,7 +83,9 @@ class DeploymentCommands(object):
 
         if fromenv:
             # TODO(astudenov): move this to Credential plugin
-            config = {"openstack": envutils.get_creds_from_env_vars()}
+            config = {
+                "type": "ExistingCloud",
+                "creds": {"openstack": envutils.get_creds_from_env_vars()}}
         else:
             if not filename:
                 config = {}
@@ -283,6 +285,9 @@ class DeploymentCommands(object):
             if credential.get("https_cacert"):
                 env_file.write("export OS_CACERT='%s'\n" %
                                credential["https_cacert"])
+            if credential.get("project_id"):
+                env_file.write("export OS_PROJECT_ID='%s'\n" %
+                                credential["project_id"])
             if credential.get("project_domain_name"):
                 env_file.write("export OS_IDENTITY_API_VERSION=3\n"
                                "export OS_USER_DOMAIN_NAME='%s'\n"

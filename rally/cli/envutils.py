@@ -104,6 +104,7 @@ def get_creds_from_env_vars():
         },
         "endpoint_type": get_endpoint_type_from_env(),
         "endpoint": os.environ.get("OS_ENDPOINT"),
+        "project_id": os.environ.get("OS_PROJECT_ID"),
         "region_name": os.environ.get("OS_REGION_NAME", ""),
         "https_cacert": os.environ.get("OS_CACERT", ""),
         "https_insecure": strutils.bool_from_string(
